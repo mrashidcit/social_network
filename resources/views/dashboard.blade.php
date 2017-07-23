@@ -24,8 +24,29 @@
                         Posted by {{ $post->user->first_name }} on {{ $post->created_at }}
                     </div>
                     <div class="interaction">
-                        <a href="#" class="like">Like</a> |
-                        <a href="#" class="like">Dislike</a>
+                        <a href="#" class="like">
+                            @if(Auth::user()->likes()->where('post_id', $post->id)->first())
+                                @if(Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1)
+                                    You like this post
+                                @else
+                                    Like
+                                @endif
+                            @else
+                                Like
+                            @endif
+
+                        </a> |
+                        <a href="#" class="like">
+                            @if(Auth::user()->likes()->where('post_id', $post->id)->first())
+                                @if(Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0)
+                                    You dont\'t like this post
+                                @else
+                                    Dislike
+                                @endif
+                            @else
+                                Dislike
+                            @endif
+                        </a>
                         @if(Auth::user() == $post->user)
                             |
                             <a href="#" class="edit">Edit</a> |

@@ -15,7 +15,7 @@ class Like extends Model
         return $this->belongsTo('App\User');
     }
 
-    pubilc function post(){
+    public function post(){
         return $this->belongsTo('App\Post');
-}
+    }
 }
