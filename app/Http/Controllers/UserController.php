@@ -62,7 +62,9 @@ class UserController extends Controller
              return redirect()->route('dashboard');
         } // end if
 
-        return redirect()->back();
+        return redirect()->back()
+            ->withInput()
+            ->with('invalid_info', 'Invalid email or password!');
 
     }
 

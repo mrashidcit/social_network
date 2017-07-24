@@ -17,3 +17,12 @@
         </div>
     </div>
 @endif
+
+@if(Session::has('invalid_info'))
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4 error">
+            {{ Session::get('invalid_info') }}
+        </div>
+    </div>
+@endif
+
