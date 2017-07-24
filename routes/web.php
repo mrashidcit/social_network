@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('signin.page');
 })->name('home');
 
 Route::post('/signup', [
@@ -20,9 +20,20 @@ Route::post('/signup', [
     'as' => 'signup'
 ]);
 
+Route::get('/signup', [
+    'uses' => 'UserController@create',
+    'as' => 'signup.create'
+]);
+
+
 Route::post('/signin', [
     'uses' => 'UserController@postSignIn',
     'as' => 'signin'
+]);
+
+Route::get('/signin', [
+    'uses' => 'UserController@signInPage',
+    'as' => 'signin.page'
 ]);
 
 Route::get('/dashboard', [

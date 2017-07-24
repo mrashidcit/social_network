@@ -8,12 +8,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ route('dashboard') }}">Dashboard</a>
+            @if(Auth::check())
+                <a class="navbar-brand" href="{{ route('dashboard') }}">Dashboard</a>
+            @endif
         </div>
 
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="{{ route('account') }}">Account</a></li>
-            <li><a href="{{ route('logout') }}">LogOut</a></li>
+            @if(Auth::check())
+                <li><a href="{{ route('account') }}">Account</a></li>
+                <li><a href="{{ route('logout') }}">LogOut</a></li>
+            @endif
 
         </ul>
 

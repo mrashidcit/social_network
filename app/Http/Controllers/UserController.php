@@ -38,6 +38,17 @@ class UserController extends Controller
 
     }
 
+    public function create(){
+
+        return view('auth.users.create');
+
+    }
+
+    public function signInPage(){
+
+        return view('auth.users.signin');
+    }
+
     public function postSignIn(Request $req){
 
         $this->validate($req, [
@@ -57,7 +68,7 @@ class UserController extends Controller
 
     public function logOut(){
         Auth::logout();
-        return redirect()->route('home');
+        return redirect()->route('signin.page');
     }
 
     public function getAccount(){
